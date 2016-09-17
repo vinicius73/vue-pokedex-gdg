@@ -1,11 +1,17 @@
 <template>
   <div id="pokemon-loader">
-    <div class="pokemon" id="charmender"></div>
+    <div class="pokemon" :id="pokemon"></div>
   </div>
 </template>
 
 <script>
+const pokemons = ['charmender', 'squirtle', 'bulbasaur']
 export default {
+  data () {
+    return {
+      pokemon: pokemons[Math.floor(Math.random() * pokemons.length)]
+    }
+  }
 }
 </script>
 
