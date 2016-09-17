@@ -5,7 +5,8 @@ import { set } from 'vue'
 export default {
   data () {
     return {
-      list: []
+      list: [],
+      current: '',
     }
   },
   ready () {
@@ -17,6 +18,7 @@ export default {
   methods: {
     select (type) {
       this.$emit('select', type)
+      this.current = type.name
     }
   }
 }
@@ -25,6 +27,7 @@ export default {
 <template>
   <ul class="list-group">
     <li class="list-group-item"
+        :class="{active: type.name === current}"
         v-for="type in list"
         @click="select(type)" >
       {{ type.name }}

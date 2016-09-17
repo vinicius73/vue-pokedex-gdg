@@ -7,12 +7,7 @@ export default {
   },
   computed: {
     sprites () {
-      const sprites = this.pokemon.sprites || {}
-      return availableSprites
-        .reduce((acc, key) => {
-          acc.push(sprites[key])
-          return acc
-        }, []).filter(x => (x !== undefined && x !== null))
+      return availableSprites(this.pokemon.sprites || {})
     }
   }
 }
@@ -26,9 +21,12 @@ export default {
 
     <div class="row">
       <div v-for="sprite in sprites" class="col-xs-6 col-md-3">
-        <span class="thumbnail">
-          <img :src="sprite">
-        </span>
+        <div class="thumbnail">
+          <img :src="sprite.url" :alt="sprite.key" :title="sprite.key">
+          <div class="caption">
+            {{ sprite.key }}
+          </div>
+        </div>
       </div>
     </div>
   </div>
