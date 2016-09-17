@@ -2,3 +2,4 @@
 node_modules
 dist/vendor
 dist/build.js
+dist/index.html
