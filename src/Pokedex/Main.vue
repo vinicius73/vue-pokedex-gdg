@@ -17,20 +17,23 @@ export default {
     }
   },
   methods: {
+    setLoad (value) {
+      this.isLoading = value
+    },
     onTypeSelect (type) {
-      this.isLoading = true
+      this.setLoad(true)
       getType(type.name)
         .then(result => {
           set(this, 'type', result)
-          this.isLoading = false
+          this.setLoad(false)
         })
     },
     onPokemonSelect (pokemon) {
-      this.isLoading = true
+      this.setLoad(true)
       getPokemon(pokemon.name)
         .then(result => {
           set(this, 'pokemon', result)
-          this.isLoading = false
+          this.setLoad(false)
         })
     }
   },
@@ -47,10 +50,13 @@ export default {
   <div class="container">
     <div class="row">
       <header class="page-header">
-        <h3>Pokedex GDG <small v-show="isLoading">Loading...</small></h3>
+        <div class="pull-right">
+          <a href="https://github.com/vinicius73/">@Vinicius73</a>
+        </div>
+        <h3><a href="https://github.com/vinicius73/vue-pokedex-gdg">Pokédex GDG</a> <small v-show="isLoading">Loading...</small></h3>
       </header>
 
-      <types @select="onTypeSelect" class="col-md-2"></types>
+      <types @select="onTypeSelect" @load-start="setLoad(true)" @load-end="setLoad(false)" class="col-md-2"></types>
       <pokemon-list @select="onPokemonSelect" class="col-md-3" :list="pokemonList"></pokemon-list>
       <Pokemon-detail class="col-md-7" :pokemon="pokemon"></Pokemon-detail>
     </div>

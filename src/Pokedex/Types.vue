@@ -6,19 +6,24 @@ export default {
   data () {
     return {
       list: [],
-      current: '',
+      current: ''
     }
   },
   ready () {
-    getList()
-      .then(response => {
-        set(this, 'list', response.results)
-      })
+    this.loadTypes()
   },
   methods: {
     select (type) {
       this.$emit('select', type)
       this.current = type.name
+    },
+    loadTypes () {
+      this.$emit('load-start')
+      getList()
+        .then(response => {
+          set(this, 'list', response.results)
+          this.$emit('load-end')
+        })
     }
   }
 }
