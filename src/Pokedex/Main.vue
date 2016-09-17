@@ -5,9 +5,10 @@ import { set } from 'vue'
 import Types from './Types.vue'
 import PokemonList from './PokemonList.vue'
 import PokemonDetail from './PokemonDetail.vue'
+import Loader from './Loader.vue'
 
 export default {
-  components: { Types, PokemonList, PokemonDetail },
+  components: { Types, PokemonList, PokemonDetail, Loader },
   data () {
     return {
       type: {},
@@ -42,6 +43,7 @@ export default {
 </script>
 
 <template>
+  <loader v-if="isLoading"></loader>
   <div class="container">
     <div class="row">
       <header class="page-header">
