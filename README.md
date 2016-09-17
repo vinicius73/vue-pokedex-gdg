@@ -1,6 +1,11 @@
-# pokedex
+# Pokédex GDG
 
-> A Vue.js project
+> Projeto de demonstração do Vue.js para o GDG - Duque de Caxias
+
+Apresentação da palestra [Vue.js - O Framework Progressivo](http://bit.ly/vue-js-progressive-slides-br
+) em 17/09/2016 por [@vinicius73](https://github.com/vinicius73)
+
+[Demo](https://vinicius73.github.io/vue-pokedex-gdg/)
 
 ## Build Setup
 
@@ -13,12 +18,4 @@ npm run dev
 
 # build for production with minification
 npm run build
-
-# lint all *.js and *.vue files
-npm run lint
-
-# run unit tests
-npm test
 ```
-
-For more information see the [docs for vueify](https://github.com/vuejs/vueify).
